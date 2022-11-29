@@ -22,19 +22,17 @@ public class Student {
     @Column(name= "last_name")
     private String last_name;
 
+    @Column(name= "domain")
+    private int domain;
+
     @OneToMany(mappedBy = "stud", fetch = FetchType.EAGER)
     private List<Bill> billsList;
 
-//    @ManyToOne
-//    @JoinColumn(name= "domain", nullable = false)
-//    private Domain domain;
-
-
-
-    public Student(int roll_no, String first_name, String last_name, List<Bill> billsList) {
+    public Student(int roll_no, String first_name, String last_name, int domain, List<Bill> billsList) {
         this.roll_no = roll_no;
         this.first_name = first_name;
         this.last_name = last_name;
+        this.domain = domain;
         this.billsList = billsList;
     }
 
@@ -74,6 +72,14 @@ public class Student {
         this.billsList = billsList;
     }
 
+    public int getDomain() {
+        return domain;
+    }
+
+    public void setDomain(int domain) {
+        this.domain = domain;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -82,6 +88,7 @@ public class Student {
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", billsList=" + billsList +
+                ", domain=" + domain +
                 '}';
     }
 }

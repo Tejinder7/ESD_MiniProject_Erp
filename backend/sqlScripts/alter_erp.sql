@@ -1,3 +1,3 @@
-alter table student 
-	add constraint fk_domain FOREIGN KEY (domain) references domain(domain_id);
+alter table bill add 
+	constraint fk_bill_student_id FOREIGN KEY (bill_student_id) references student(student_id);
 
