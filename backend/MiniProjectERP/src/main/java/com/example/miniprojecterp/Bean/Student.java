@@ -16,6 +16,14 @@ public class Student {
     @Column(name="roll_no")
     private int roll_no;
 
+    public int getStudent_id() {
+        return student_id;
+    }
+
+    public void setStudent_id(int student_id) {
+        this.student_id = student_id;
+    }
+
     @Column(name="first_name")
     private String first_name;
 
@@ -87,7 +95,6 @@ public class Student {
                 ", roll_no=" + roll_no +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
-                ", billsList=" + billsList +
                 ", domain=" + domain +
                 '}';
     }

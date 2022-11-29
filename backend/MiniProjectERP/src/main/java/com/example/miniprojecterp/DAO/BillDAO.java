@@ -7,13 +7,15 @@ import java.util.List;
 public interface BillDAO {
     public boolean addBill(Bill bill);
 
-//    public void deleteBill(Integer billId);
-//
-//    public Bill getBill(int  billId);
-//
-//    public void updateBillAmt(int billId,int amount);
-//
-//    public void updateBillDeadline(Integer billId,String date);
-//
-//    public List<Bill> getAllBills();
+    public boolean addBillDomain(int domId, Bill bill);
+
+    public Bill getBill(int  billId);
+
+    public List<Bill> getAllBills();
+
+    public void updateBillAmt(int billId,int amount);
+
+    public void updateBillDeadline(Integer billId,String deadline);
+
+    public void deleteBill(Integer billId);
 }

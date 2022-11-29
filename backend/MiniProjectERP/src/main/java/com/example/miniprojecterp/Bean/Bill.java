@@ -26,6 +26,14 @@ public class Bill {
     @Column(name= "deadline")
     private String deadline;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @ManyToOne
     @JoinColumn(name= "bill_student_id", nullable = false)
     private Student stud;

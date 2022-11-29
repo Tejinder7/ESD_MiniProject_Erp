@@ -8,7 +8,7 @@ create table accounts_dept(
 );
 
 create table student(
-        student_id smallint,
+        student_id integer NOT NULL AUTO_INCREMENT,
         roll_no smallint NOT NULL UNIQUE,
         first_name varchar(30) NOT NULL,
         last_name varchar(30),
@@ -17,11 +17,11 @@ create table student(
 );
 
 create table bill (
-	id smallint,
+	id integer NOT NULL AUTO_INCREMENT,
        	description varchar(30), 
 	amount int, 
 	bill_date varchar(30), 
 	deadline varchar(30), 
-	bill_student_id smallint, 
+	bill_student_id integer, 
 	constraint pk_bill PRIMARY KEY (id)
 );
