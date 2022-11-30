@@ -16,5 +16,6 @@
         <mapping class="com.example.miniprojecterp.Bean.Bill"/>
         <mapping class="com.example.miniprojecterp.Bean.Student"/>
         <mapping class="com.example.miniprojecterp.Bean.Student_Payment"/>
+        <mapping class="com.example.miniprojecterp.Bean.User"/>
     </session-factory>
 </hibernate-configuration>

@@ -89,7 +89,8 @@ public class BillService {
 
     public void deleteBill(Integer billId)
     {
+        new Student_PaymentDAOImpl().delBills(billId);
         new BillDAOImpl().deleteBill(billId);
-//        new Student_paymentDAOimpl().delBills(BillId);
+
     }
 }

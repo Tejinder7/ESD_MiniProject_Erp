@@ -29,6 +29,24 @@ public class Student_PaymentDAOImpl implements Student_PaymentDAO {
     }
 
     @Override
+    public void delBills(int billId) {
+        try(Session session = HibernateSessionUtil.getSession()){
+            Transaction transaction = ((Session) session).beginTransaction();
+            System.out.println(billId);
+            Query query= session.createQuery("delete from Student_Payment where bill.id="+ billId);
+
+            int result = query.executeUpdate();
+            System.out.println(result);
+
+            transaction.commit();
+        }
+        catch (HibernateException exception) {
+            System.out.println("Hibernate Exception");
+            System.out.print(exception.getLocalizedMessage());
+        }
+    }
+
+    @Override
     public boolean addPayment(Student_Payment payment) {
         try(Session session = HibernateSessionUtil.getSession()){
             Transaction transaction = ((Session) session).beginTransaction();

@@ -2,6 +2,8 @@ package com.example.miniprojecterp.DAO.DAOImplement;
 
 import com.example.miniprojecterp.Bean.Bill;
 import com.example.miniprojecterp.Bean.Student;
+import com.example.miniprojecterp.Bean.Student_Payment;
+import com.example.miniprojecterp.Bean.User;
 import com.example.miniprojecterp.DAO.BillDAO;
 import com.example.miniprojecterp.DAO.StudentDAO;
 import com.example.miniprojecterp.Util.HibernateSessionUtil;
@@ -10,6 +12,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BillDAOImpl implements BillDAO {
@@ -144,6 +147,7 @@ public class BillDAOImpl implements BillDAO {
     public void deleteBill(Integer billId) {
         try(Session session = HibernateSessionUtil.getSession()){
             Transaction transaction = ((Session) session).beginTransaction();
+
             Query query= session.createQuery("delete from Bill where id=: billId");
 
             query.setParameter("billId", billId);
@@ -152,12 +156,10 @@ public class BillDAOImpl implements BillDAO {
             System.out.println(result);
 
             transaction.commit();
-            return;
         }
         catch (HibernateException exception) {
             System.out.println("Hibernate Exception");
             System.out.print(exception.getLocalizedMessage());
-            return;
         }
     }
 }

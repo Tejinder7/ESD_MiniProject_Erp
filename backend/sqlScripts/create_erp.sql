@@ -1,10 +1,8 @@
-create table accounts_dept(
-	employee_id int NOT NULL AUTO_INCREMENT,
-	first_name varchar(30),
-	last_name varchar(30),
-	email varchar(30),
-	password varchar(30),
-	constraint pk_accounts_dept PRIMARY KEY (employee_id)
+create table user_master(
+	user_id int NOT NULL AUTO_INCREMENT,
+	user_name varchar(30),
+	user_password varchar(30),
+	constraint pk_accounts_dept PRIMARY KEY (user_id)
 );
 
 create table student(

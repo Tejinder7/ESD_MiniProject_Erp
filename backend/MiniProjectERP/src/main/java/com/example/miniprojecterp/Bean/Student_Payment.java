@@ -8,7 +8,7 @@ public class Student_Payment {
     @Id
     @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
+    private int pay_id;
 
     @Column(name= "description")
     private String description;
@@ -20,7 +20,7 @@ public class Student_Payment {
     private String payment_date;
 
     @OneToOne
-    @JoinColumn(name= "bill_id")
+    @JoinColumn(name= "bill_id", referencedColumnName = "id")
     private Bill bill;
 
     @ManyToOne
@@ -42,11 +42,11 @@ public class Student_Payment {
     }
 
     public int getId() {
-        return id;
+        return pay_id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.pay_id = id;
     }
 
     public String getDescription() {
@@ -92,7 +92,7 @@ public class Student_Payment {
     @Override
     public String toString() {
         return "Student_Payment{" +
-                "id=" + id +
+                "id=" + pay_id +
                 ", description='" + description + '\'' +
                 ", amount=" + amount +
                 ", payment_date='" + payment_date + '\'' +
