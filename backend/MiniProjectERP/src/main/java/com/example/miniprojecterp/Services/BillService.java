@@ -77,6 +77,16 @@ public class BillService {
         new BillDAOImpl().addBill(bill);
     }
 
+    public void addBillToDomain(String description, int amount, String bill_date, String deadline, int domain){
+        Bill bill= new Bill();
+        bill.setDescription(description);
+        bill.setAmount(amount);
+        bill.setBill_date(bill_date);
+        bill.setDeadline(deadline);
+
+        new BillDAOImpl().addBillDomain(domain, bill);
+    }
+
     public void updateBillAmount(Integer billId,Integer amount)
     {
         new BillDAOImpl().updateBillAmt(billId, amount);

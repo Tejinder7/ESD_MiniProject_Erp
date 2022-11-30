@@ -46,6 +46,7 @@ public class BillDAOImpl implements BillDAO {
             List<Student> students= studDAO.getDomainStudents(301);
 
             for(Student s: students){
+                System.out.println(s);
                 Bill billAdd= new Bill();
                 bill.setStud(s);
                 bill.setId(billAdd.getId());

@@ -36,3 +36,51 @@
     transform: rotate(360deg);
   }
 }
+
+
+nav .navbar-nav li a:hover{
+  color: #ffcc00 !important;
+}
+
+.btn-outline-primary,
+.btn-outline-primary:active,
+.btn-outline-primary:visited,
+.btn-outline-primary:focus {
+ 
+  border-color: #ff6600 !important;
+  color: #000000;
+}
+
+.btn-outline-primary:hover {
+      
+  background-color: #ff6600 !important;
+  color: #ffffff !important;
+}
+
+.btn-danger,
+.btn-danger:active,
+.btn-danger:visited,
+.btn-danger:focus {
+ 
+  background-color: #ff3300;
+  color: #ffffff !important;
+}
+
+.btn-outline-danger,
+.btn-outline-danger:active,
+.btn-outline-danger:visited,
+.btn-outline-danger:focus {
+ 
+  border-color: #ff3300 !important;
+  color: #000000;
+}
+
+.btn-outline-danger:hover {
+      
+  background-color: #ff3300 !important;
+  color: #ffffff !important;
+}
+
+nav .navbar{
+  background-color: #00111F !important;
+}

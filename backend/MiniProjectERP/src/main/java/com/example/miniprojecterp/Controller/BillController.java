@@ -38,11 +38,12 @@ public class BillController {
         String result = "Added Bills";
         System.out.println(result);
         BillService service = new BillService();
-        List<Student> students = service.getStudentList(domainId);
-
-        for(Student s: students){
-            service.addNewSingleBill(descrption, amount, date, deadline, s);
-        }
+//        List<Student> students = service.getStudentList(domainId);
+//
+//        for(Student s: students){
+//            service.addNewSingleBill(descrption, amount, date, deadline, s);
+//        }
+        service.addBillToDomain(descrption, amount, date, deadline, domainId);
         System.out.println(result);
         return Response.ok().entity(result).build();
     }

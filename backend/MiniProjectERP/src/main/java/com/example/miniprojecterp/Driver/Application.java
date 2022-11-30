@@ -33,17 +33,18 @@ public class Application {
 
 
         BillDAO billDAO= new BillDAOImpl();
-        Bill billPayed= billDAO.getBill(15);
+        Bill billPayed= billDAO.getBill(13);
         Student studentPayed= billPayed.getStud();
 //
         Student_PaymentDAO payDAO= new Student_PaymentDAOImpl();
+        payDAO.delBills(17);
         Student_Payment paymentNew= new Student_Payment();
         paymentNew.setBill(billPayed);
         paymentNew.setStudent(studentPayed);
         paymentNew.setAmount(billPayed.getAmount());
         paymentNew.setPayment_date("2022-12-02");
         paymentNew.setDescription("Fees Paid");
-//
+
         if(payDAO.addPayment(paymentNew)) {
             System.out.println("Payment 1 added Successfully");
         }
@@ -69,16 +70,16 @@ public class Application {
 //        System.out.println(stud1);
 //
 //        Bill bill1= new Bill();
-//        bill1.setBill_date("2022-11-29");
+//        bill1.setBill_date("2022-12-01");
 //        bill1.setDeadline("2022-12-31");
-//        bill1.setAmount(2000);
-//        bill1.setDescription("2nd Sem fee");
+//        bill1.setAmount(3000);
+//        bill1.setDescription("2nd Late fee");
 //        bill1.setStud(stud1);
 //        System.out.println(bill1);
 //
 //        BillDAO billDAO= new BillDAOImpl();
-
-//        if(billDAO.addBill(bill1)) {
+//
+//        if(billDAO.addBillDomain(301, bill1)) {
 //            System.out.println("Bill 1 added Successfully");
 //        }
     }
