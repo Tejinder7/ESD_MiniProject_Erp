@@ -17,11 +17,11 @@ public class BillDAOImpl implements BillDAO {
     public boolean addBill(Bill bill) {
         try(Session session = HibernateSessionUtil.getSession()){
             Transaction transaction = ((Session) session).beginTransaction();
-            StudentDAO studDAO= new StudentDAOImpl();
-            Student stud1= studDAO.getStudent(203);
-            System.out.println(stud1);
-
-            bill.setStud(stud1);
+//            StudentDAO studDAO= new StudentDAOImpl();
+//            Student stud1= studDAO.getStudent(203);
+//            System.out.println(stud1);
+//
+//            bill.setStud(stud1);
 
             session.persist(bill);
             transaction.commit();

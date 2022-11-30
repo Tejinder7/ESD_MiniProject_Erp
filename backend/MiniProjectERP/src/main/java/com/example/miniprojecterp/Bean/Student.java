@@ -33,15 +33,15 @@ public class Student {
     @Column(name= "domain")
     private int domain;
 
-    @OneToMany(mappedBy = "stud", fetch = FetchType.EAGER)
-    private List<Bill> billsList;
+//    @OneToMany(mappedBy = "stud", fetch = FetchType.EAGER)
+//    private List<Bill> billsList;
 
-    public Student(int roll_no, String first_name, String last_name, int domain, List<Bill> billsList) {
+    public Student(int roll_no, String first_name, String last_name, int domain) {
         this.roll_no = roll_no;
         this.first_name = first_name;
         this.last_name = last_name;
         this.domain = domain;
-        this.billsList = billsList;
+//        this.billsList = billsList;
     }
 
     public Student() {
@@ -72,13 +72,13 @@ public class Student {
         this.last_name = last_name;
     }
 
-    public List<Bill> getBillsList() {
-        return billsList;
-    }
+//    public List<Bill> getBillsList() {
+//        return billsList;
+//    }
 
-    public void setBillsList(List<Bill> billsList) {
-        this.billsList = billsList;
-    }
+//    public void setBillsList(List<Bill> billsList) {
+//        this.billsList = billsList;
+//    }
 
     public int getDomain() {
         return domain;
