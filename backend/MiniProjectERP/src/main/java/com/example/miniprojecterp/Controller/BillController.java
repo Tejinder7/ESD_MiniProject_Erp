@@ -2,6 +2,7 @@ package com.example.miniprojecterp.Controller;
 
 import com.example.miniprojecterp.Bean.Bill;
 import com.example.miniprojecterp.Bean.Student;
+import com.example.miniprojecterp.Bean.Student_Payment;
 import com.example.miniprojecterp.Services.BillService;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.GenericEntity;
@@ -18,8 +19,7 @@ public class BillController {
     @Path("/add/{desc}/{amt}/{date}/{dead}/{id}")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.TEXT_HTML)
-    public Response add_bill(@PathParam("desc") String descrption,
-                             @PathParam("amt") int amount,@PathParam("date") String date,@PathParam("dead") String deadline ,@PathParam("id") int id) throws URISyntaxException {
+    public Response add_bill(@PathParam("desc") String descrption, @PathParam("amt") int amount,@PathParam("date") String date,@PathParam("dead") String deadline ,@PathParam("id") int id) throws URISyntaxException {
         String result = "Added Bill";
         System.out.println(result);
         BillService service = new BillService();
@@ -34,8 +34,7 @@ public class BillController {
     @Path("/add/domain/{desc}/{amt}/{date}/{dead}/{id}")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.TEXT_HTML)
-    public Response add_bill_to_domain(@PathParam("desc") String descrption,
-                             @PathParam("amt") int amount,@PathParam("date") String date,@PathParam("dead") String deadline ,@PathParam("id") int id) throws URISyntaxException {
+    public Response add_bill_to_domain(@PathParam("desc") String descrption, @PathParam("amt") int amount,@PathParam("date") String date,@PathParam("dead") String deadline ,@PathParam("id") int id) throws URISyntaxException {
         String result = "Added Bill";
         System.out.println(result);
         BillService service = new BillService();
@@ -51,8 +50,7 @@ public class BillController {
     @POST
     @Path("/updateamt/{id}/{amount}")
     @Produces(MediaType.TEXT_HTML)
-    public Response update_bill_amount(@PathParam("id") int billid,
-                                @PathParam("amount") int amt) throws URISyntaxException {
+    public Response update_bill_amount(@PathParam("id") int billid, @PathParam("amount") int amt) throws URISyntaxException {
         BillService service = new BillService();
         service.updateBillAmount(billid, amt);
         String result = "Updated Bill Amount";
@@ -62,8 +60,7 @@ public class BillController {
     @POST
     @Path("/updatedeadline/{id}/{date}")
     @Produces(MediaType.TEXT_HTML)
-    public Response update2_bill(@PathParam("id") int billId,
-                                 @PathParam("date") String deadline) throws URISyntaxException {
+    public Response update2_bill(@PathParam("id") int billId, @PathParam("date") String deadline) throws URISyntaxException {
         BillService service = new BillService();
         service.updateBillDead(billId, deadline);
         String result = "Updated Bill Date";
@@ -89,5 +86,27 @@ public class BillController {
         billsList = service.viewAllBills();
         //GenericEntity<List<Bill>> genericEntity = new GenericEntity<List<Bill>>(billsList){};
         return Response.ok().entity(billsList).build();
+    }
+
+    @GET
+    @Path("viewPaid")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response viewPaid(){
+        List<Bill> paymentList  = new ArrayList<>();
+        BillService service = new BillService();
+        paymentList = service.viewPaidBills();
+        //GenericEntity<List<Bill>> genericEntity = new GenericEntity<List<Bill>>(billsList){};
+        return Response.ok().entity(paymentList).build();
+    }
+
+    @GET
+    @Path("viewUnpaid")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response viewunPaid(){
+        List<Bill> unpaidBillsList  = new ArrayList<>();
+        BillService service = new BillService();
+        unpaidBillsList = service.viewUnpaidBills();
+        //GenericEntity<List<Bill>> genericEntity = new GenericEntity<List<Bill>>(billsList){};
+        return Response.ok().entity(unpaidBillsList).build();
     }
 }

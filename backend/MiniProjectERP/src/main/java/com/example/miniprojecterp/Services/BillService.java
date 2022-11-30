@@ -2,12 +2,16 @@ package com.example.miniprojecterp.Services;
 
 import com.example.miniprojecterp.Bean.Bill;
 import com.example.miniprojecterp.Bean.Student;
+import com.example.miniprojecterp.Bean.Student_Payment;
 import com.example.miniprojecterp.DAO.BillDAO;
 import com.example.miniprojecterp.DAO.DAOImplement.BillDAOImpl;
 import com.example.miniprojecterp.DAO.DAOImplement.StudentDAOImpl;
+import com.example.miniprojecterp.DAO.DAOImplement.Student_PaymentDAOImpl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class BillService {
     public Student getStudentId(int id) {
@@ -24,6 +28,41 @@ public class BillService {
     {
         List<Bill> allBills= new BillDAOImpl().getAllBills() ;
         return allBills;
+    }
+
+    public List<Bill> viewPaidBills()
+    {
+        List<Student_Payment> paidBills= new Student_PaymentDAOImpl().viewPayments();
+        List<Bill> paidBillsfromId= new ArrayList<Bill>();
+
+        for(Student_Payment p: paidBills){
+            paidBillsfromId.add(p.getBill());
+        }
+        return paidBillsfromId;
+    }
+
+    public List<Bill> viewUnpaidBills()
+    {
+        List<Bill> allBills = new BillDAOImpl().getAllBills();
+        List<Student_Payment> paidBills= new Student_PaymentDAOImpl().viewPayments() ;
+
+        List<Integer> paidBillId = new ArrayList<Integer>();
+
+        for(Student_Payment p : paidBills){
+            paidBillId.add(p.getBill().getId());
+        }
+
+        List<Bill> unpaidBills = new ArrayList<Bill>();
+
+        for(Bill b : allBills){
+
+            if(paidBillId.contains(b.getId())){
+                System.out.println("Not Added");
+            }else{
+                unpaidBills.add(b);
+            }
+        }
+        return unpaidBills;
     }
 
 

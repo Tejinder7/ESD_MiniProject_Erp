@@ -15,5 +15,6 @@
         <property name="show_sql">true</property>
         <mapping class="com.example.miniprojecterp.Bean.Bill"/>
         <mapping class="com.example.miniprojecterp.Bean.Student"/>
+        <mapping class="com.example.miniprojecterp.Bean.Student_Payment"/>
     </session-factory>
 </hibernate-configuration>

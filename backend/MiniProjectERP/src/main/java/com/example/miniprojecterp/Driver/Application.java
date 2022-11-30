@@ -2,10 +2,13 @@ package com.example.miniprojecterp.Driver;
 
 import com.example.miniprojecterp.Bean.Bill;
 import com.example.miniprojecterp.Bean.Student;
+import com.example.miniprojecterp.Bean.Student_Payment;
 import com.example.miniprojecterp.DAO.BillDAO;
 import com.example.miniprojecterp.DAO.DAOImplement.BillDAOImpl;
 import com.example.miniprojecterp.DAO.DAOImplement.StudentDAOImpl;
+import com.example.miniprojecterp.DAO.DAOImplement.Student_PaymentDAOImpl;
 import com.example.miniprojecterp.DAO.StudentDAO;
+import com.example.miniprojecterp.DAO.Student_PaymentDAO;
 
 import java.util.List;
 
@@ -18,7 +21,22 @@ public class Application {
     private static void runApplication() {
 
         BillDAO billDAO= new BillDAOImpl();
-        billDAO.deleteBill(12);
+        Bill billPayed= billDAO.getBill(15);
+        Student studentPayed= billPayed.getStud();
+
+        Student_PaymentDAO payDAO= new Student_PaymentDAOImpl();
+        Student_Payment paymentNew= new Student_Payment();
+        paymentNew.setBill(billPayed);
+        paymentNew.setStudent(studentPayed);
+        paymentNew.setAmount(billPayed.getAmount());
+        paymentNew.setPayment_date("2022-12-02");
+        paymentNew.setDescription("Fees Paid");
+
+        if(payDAO.addPayment(paymentNew)) {
+            System.out.println("Payment 1 added Successfully");
+        }
+
+//        billDAO.deleteBill(12);
 //        List<Bill> billsPrint= billDAO.getAllBills();
 //
 //        for(Bill b: billsPrint){
