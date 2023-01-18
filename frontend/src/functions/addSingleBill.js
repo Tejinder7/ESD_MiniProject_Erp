@@ -9,12 +9,13 @@ export default function AddSingleBill() {
     const navigate = useNavigate();
 
     const [bill, setBill] = useState({
-        description: "",
-        amount: "",
-        bill_date: "",
-        deadline: "",
-        student_id: "",
-    });
+        description:"",
+        amount:"",
+        bill_date:"",
+        deadline:"",
+        student_id:""
+    }
+    );
 
     const { description, amount, bill_date, deadline, student_id } = bill
 
@@ -24,7 +25,7 @@ export default function AddSingleBill() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post(`http://localhost:8080/MiniProjectERP-1.0-SNAPSHOT/api/bills/add/${bill.description}/${bill.amount}/${bill.bill_date}/${bill.deadline}/${bill.student_id}`)
+        await axios.post(`http://localhost:8080/MiniProjectERP-1.0-SNAPSHOT/api/bills/add?desc=${bill.description}&amt=${bill.amount}&date=${bill.bill_date}&dead=${bill.deadline}&id=${bill.student_id}`)
         navigate("/home")
     };
 
@@ -33,7 +34,7 @@ export default function AddSingleBill() {
         <div>
             <Navbar/>
             <div className="container">
-                <div className='row'>
+                <div className='row d-inline'>
                     <div className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
                         <h2 className='text-center m-4'>Add new Bill</h2>
                         <form onSubmit={(e) => onSubmit(e)}>

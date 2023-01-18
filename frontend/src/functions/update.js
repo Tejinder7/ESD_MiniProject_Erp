@@ -15,7 +15,7 @@ export default function Update() {
           setBill({...bill,[e.target.name]:e.target.value})
       };
   
-      const onSubmitCred = async (bill_id, amount)=>{
+      const onSubmitAmount = async (bill_id, amount)=>{
           await axios.post(`http://localhost:8080/MiniProjectERP-1.0-SNAPSHOT/api/bills/updateamt/${bill_id}/${amount}`)
           .then(response => response.status)
           .catch(err => console.warn(err))
@@ -23,7 +23,7 @@ export default function Update() {
           navigate("/home")
       };
   
-      const onSubmitDesc = async (b_id, deadline)=>{
+      const onSubmitDead = async (b_id, deadline)=>{
           await axios.post(`http://localhost:8080/MiniProjectERP-1.0-SNAPSHOT/api/bills/updatedeadline/${b_id}/${deadline}`)
           .then(response => response.status)
           .catch(err => console.warn(err))
@@ -36,7 +36,7 @@ export default function Update() {
             <Navbar/>
         
       <div className='="container'>
-          <div className='row'>
+          <div className='row d-inline'>
           <div className='col-md-4 offset-md-4 border rounded p-4 mt-2 shadow'>
               <h2 className='text-center m-4'>Update Bill</h2>
               
@@ -65,7 +65,7 @@ export default function Update() {
                   onChange={(e)=>onInputChange(e)}/>
                   <br/>
                   <button type="submit" className='btn btn-outline-primary' 
-                  onClick={()=>onSubmitCred(id, amount)}
+                  onClick={()=>onSubmitAmount(id, amount)}
                   >
                   Update
               </button>
@@ -83,7 +83,7 @@ export default function Update() {
                   onChange={(e)=>onInputChange(e)}/>
                   <br/>
                   <button type="submit" className='btn btn-outline-primary'
-                  onClick={()=>onSubmitDesc(id, deadline)}
+                  onClick={()=>onSubmitDead(id, deadline)}
                   >
                   Update
               </button>

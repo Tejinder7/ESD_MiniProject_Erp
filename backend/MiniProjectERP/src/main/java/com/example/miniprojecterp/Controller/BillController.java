@@ -16,10 +16,10 @@ import java.util.List;
 @Path("/bills")
 public class BillController {
     @POST
-    @Path("/add/{desc}/{amt}/{date}/{dead}/{id}")
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
-    @Produces(MediaType.TEXT_HTML)
-    public Response add_bill(@PathParam("desc") String descrption, @PathParam("amt") int amount,@PathParam("date") String date,@PathParam("dead") String deadline ,@PathParam("id") int id){
+    @Path("/add/")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response add_bill(@QueryParam("desc") String descrption, @QueryParam("amt") int amount,@QueryParam("date") String date,@QueryParam("dead") String deadline ,@QueryParam("id") int id){
         String result = "Added Bill";
         System.out.println(result);
         BillService service = new BillService();
@@ -32,8 +32,7 @@ public class BillController {
 
     @POST
     @Path("/add/domain/{desc}/{amt}/{date}/{dead}/{domain}")
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
-    @Produces(MediaType.TEXT_HTML)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response add_bill_to_domain(@PathParam("desc") String descrption, @PathParam("amt") int amount,@PathParam("date") String date,@PathParam("dead") String deadline ,@PathParam("domain") int domainId){
         String result = "Added Bills";
         System.out.println(result);
@@ -50,7 +49,7 @@ public class BillController {
 
     @POST
     @Path("/updateamt/{id}/{amount}")
-    @Produces(MediaType.TEXT_HTML)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response update_bill_amount(@PathParam("id") int billid, @PathParam("amount") int amt){
         BillService service = new BillService();
         service.updateBillAmount(billid, amt);
@@ -60,7 +59,7 @@ public class BillController {
 
     @POST
     @Path("/updatedeadline/{id}/{date}")
-    @Produces(MediaType.TEXT_HTML)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response update2_bill(@PathParam("id") int billId, @PathParam("date") String deadline){
         BillService service = new BillService();
         service.updateBillDead(billId, deadline);
@@ -68,10 +67,10 @@ public class BillController {
         return Response.ok().entity(result).build();
     }
 
-    @POST
-    @Path("/delete/{billid}")
-    @Produces(MediaType.TEXT_HTML)
-    public Response delete_bill(@PathParam("billid") int id){
+    @DELETE
+    @Path("/delete")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response delete_bill(@QueryParam("billid") int id){
         BillService service = new BillService();
         service.deleteBill(id);
         String result = "Bill Deleted";

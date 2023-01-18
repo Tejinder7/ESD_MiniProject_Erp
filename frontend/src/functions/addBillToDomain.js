@@ -33,7 +33,7 @@ export default function AddBillToDomain() {
     <div>
         <Navbar/>
     <div className = "container">
-        <div className='row'>
+        <div className='row d-inline'>
         <div className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
             <h2 className='text-center m-4'>Add new Bill to Domain</h2>
             <form onSubmit={(e)=>onSubmit(e)}>

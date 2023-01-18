@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../layout/navbar';
+import Navbar2 from '../layout/navbar2';
 
 export default function Login() {
 
@@ -15,23 +15,24 @@ export default function Login() {
     const{user_name, user_password}=log;
 
     const onInputChange=(e)=>{
-        console.log("Hello Guys")
+
         setlog({...log,[e.target.name]:e.target.value})
     };
 
     const onSubmit = async (e)=>{
         e.preventDefault();
-        const response = await axios.get(`http://localhost:8080/MiniProjectERP-1.0-SNAPSHOT/api/details/login/${log.user_name}/${log.user_password}`)
-        console.log(response);
-        navigate("/home")
+        const response = await axios.post(`http://localhost:8080/MiniProjectERP-1.0-SNAPSHOT/api/details/login/`, log)
         
+        console.log(response);
+        navigate("/home");
+
         
     };
 
   return (
-    <div>
+    <div> <Navbar2/>
     <div className = "container">
-    <div className='row'>
+    <div className='row d-inline'>
     <div className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
         <h2 className='text-center m-4'>Login</h2>
         <form onSubmit={(e)=>onSubmit(e)}>

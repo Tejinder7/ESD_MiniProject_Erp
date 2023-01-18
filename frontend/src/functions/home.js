@@ -20,7 +20,7 @@ export default function Home() {
     }
 
     const deleteBill= async(id)=>{
-        await axios.post(`http://localhost:8080/MiniProjectERP-1.0-SNAPSHOT/api/bills/delete/${id}`);
+        await axios.delete(`http://localhost:8080/MiniProjectERP-1.0-SNAPSHOT/api/bills/delete?billid=${id}`);
         loadBills();
     }
 
